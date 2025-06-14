@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "99346377112",
+    "project_id": "praca-da-ciencia",
+    "storage_bucket": "praca-da-ciencia.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99346377112:android:0b31835bc21ed5a94ba3ed",
+        "android_client_info": {
+          "package_name": "praca.da.ciencia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "99346377112-tqjp41ojaqvbb14k45ccr2i0582l9mj8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "praca.da.ciencia",
+            "certificate_hash": "03c177e11739544d5a9a203ca5097b9aa20ec917"
+          }
+        },
+        {
+          "client_id": "99346377112-krhl01tcdti7bkmcdfsd0jbk9t50174s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQVb_nlq7O31z4bJrkQil9rSTP3ugHBaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "99346377112-krhl01tcdti7bkmcdfsd0jbk9t50174s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
