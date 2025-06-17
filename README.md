@@ -13,7 +13,7 @@ O app oferece funcionalidades como **agendamento de visitas e oficinas**, **tour
 - 🗺️ **Mapa interativo da Praça da Ciência**
 - 🔍 **Tour virtual com informações sobre os espaços e equipamentos**
 - 🔔 **Eventos, oficinas e atividades**
-- 
+  
 ---
 
 ## 🛠️ Tecnologias Utilizadas
