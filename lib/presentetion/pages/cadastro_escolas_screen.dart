@@ -11,8 +11,10 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CadastroEscolasScreen extends StatefulWidget {
+  const CadastroEscolasScreen({super.key});
+
   @override
-  _CadastroEscolasScreenState createState() => _CadastroEscolasScreenState();
+  State<CadastroEscolasScreen> createState() => _CadastroEscolasScreenState();
 }
 
 class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
@@ -155,6 +157,7 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
               .get();
 
       if (agendamentoExistente.docs.isNotEmpty) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Horário indisponível para esta data.')),
         );
@@ -179,15 +182,18 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
       });
 
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(const SnackBar(content: Text('Agendamento confirmado!')));
 
       await _sendEmail();
 
       Future.delayed(const Duration(seconds: 2), () {
+        // ignore: use_build_context_synchronously
         Navigator.pop(context);
       });
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Erro ao processar agendamento: $e')),
       );
@@ -231,13 +237,16 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
         cep: _cepController.text,
       );
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('E-mail de Confirmação enviado com sucesso!'),
         ),
       );
+    // ignore: unused_catch_clause
     } on MailerException catch (e) {
-      print('Erro ao enviar e-mails: $e');
+      // print('Erro ao enviar e-mails: $e');
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Erro ao enviar e-mail'),

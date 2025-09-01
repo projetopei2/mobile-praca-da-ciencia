@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class Styles {
   static final Color backgroundColor = Color(0xffffffdd);
+  static final Color darkBackgroundColor = Color(0xFF1F1F1F);
   static final Color backgroundContentColor = Color(0xfffaf2cd);
   static final Color fontColor = Color(0xff854C01);
+  static final Color darkFontColor = Color.fromARGB(255, 255, 255, 255);
   static final Color lineBorderColor = Color(0xffa4a4a4);
   static final Color linkColor = Color(0xffC9A77B);
   static final Color textFieldColor = Color(0xffd5c59f);

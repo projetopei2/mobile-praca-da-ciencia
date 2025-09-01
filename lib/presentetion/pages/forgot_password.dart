@@ -26,6 +26,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
     try {
       await authService.resetPassword(emailController.text);
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Link para redefinir senha enviado para seu e-mail.'),
@@ -33,6 +34,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       );
     } catch (e) {
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text(e.toString())));
     }
@@ -54,6 +56,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             color: Styles.backgroundContentColor,
             boxShadow: [
               BoxShadow(
+                // ignore: deprecated_member_use
                 color: Colors.black.withOpacity(0.25),
                 blurRadius: 15,
                 offset: const Offset(5, 5),

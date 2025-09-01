@@ -32,9 +32,11 @@ class _LoginScreenState extends State<LoginScreen> {
         emailController.text,
         senhaController.text,
       );
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacementNamed('/home');
     } catch (e) {
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text(e.toString())));
     }
@@ -43,9 +45,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _handleGoogleSignIn(BuildContext context) async {
     try {
       await authService.signInWithGoogle();
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacementNamed('/home');
     } catch (e) {
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text(e.toString())));
     }
@@ -91,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(30),
                   boxShadow: [
                     BoxShadow(
+                      // ignore: deprecated_member_use
                       color: Colors.black.withOpacity(0.25),
                       blurRadius: 15,
                       offset: const Offset(5, 5),

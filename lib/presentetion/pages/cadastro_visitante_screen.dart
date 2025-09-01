@@ -4,6 +4,7 @@ import 'package:app_praca_ciencia/core/widgets/header.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 // ignore: unused_import
 import 'package:intl/intl.dart';
@@ -13,9 +14,11 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CadastroVisitanteScreen extends StatefulWidget {
+
+    const CadastroVisitanteScreen({super.key});
+
   @override
-  _CadastroVisitanteScreenState createState() =>
-      _CadastroVisitanteScreenState();
+  State<CadastroVisitanteScreen> createState() => _CadastroVisitanteScreenState();
 }
 
 class _CadastroVisitanteScreenState extends State<CadastroVisitanteScreen> {
@@ -369,6 +372,7 @@ class _CadastroVisitanteScreenState extends State<CadastroVisitanteScreen> {
                 .get();
 
         if (agendamentoExistente.docs.isNotEmpty) {
+          // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Horário indisponível para esta data.'),
@@ -390,6 +394,7 @@ class _CadastroVisitanteScreenState extends State<CadastroVisitanteScreen> {
           'id_usuario': FirebaseAuth.instance.currentUser!.uid,
         });
 
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Agendamento confirmado!')),
         );
@@ -397,9 +402,11 @@ class _CadastroVisitanteScreenState extends State<CadastroVisitanteScreen> {
         await _sendEmail();
 
         Future.delayed(const Duration(seconds: 2), () {
+          // ignore: use_build_context_synchronously
           Navigator.pop(context);
         });
       } catch (e) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Erro ao processar agendamento: $e')),
         );
@@ -439,9 +446,10 @@ class _CadastroVisitanteScreenState extends State<CadastroVisitanteScreen> {
         cep: _cepController.text,
       );
 
-      print('E-mails enviados com sucesso');
+      // print('E-mails enviados com sucesso');
+    // ignore: unused_catch_clause
     } on MailerException catch (e) {
-      print('Erro ao enviar e-mails: $e');
+      // print('Erro ao enviar e-mails: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Erro ao enviar e-mails de confirmação')),

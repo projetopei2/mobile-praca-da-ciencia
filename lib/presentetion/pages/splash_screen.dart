@@ -1,37 +1,11 @@
-import 'package:app_praca_ciencia/presentetion/pages/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
-
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const LoginScreen()));
-    });
-  }
-
-  @override
-  void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return Container(
         width: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -47,7 +21,6 @@ class _SplashScreenState extends State<SplashScreen>
             Image(image: AssetImage('assets/images/logo.png'))
           ],
         ),
-      ),
-    );
+      );
   }
 }

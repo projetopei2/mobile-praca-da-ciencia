@@ -38,6 +38,7 @@ class _TuorScreenState extends State<TuorScreen> {
           child: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.white),
             style: IconButton.styleFrom(
+              // ignore: deprecated_member_use
               backgroundColor: Colors.black.withOpacity(0.5),
               padding: const EdgeInsets.all(12),
             ),

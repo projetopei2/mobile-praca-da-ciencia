@@ -110,6 +110,7 @@ class AboutScreen extends StatelessWidget {
                 // Link para mais informações
                 GestureDetector(
                   onTap:
+                      // ignore: deprecated_member_use
                       () => launch(
                         "https://sites.google.com/edu.vitoria.es.gov.br/praca-da-ciencia/in%C3%ADcio?authuser=0",
                       ),

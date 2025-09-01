@@ -17,9 +17,7 @@ class _CarrosselState extends State<Carrossel> {
         itemSnapping: true,
         elevation: 4,
         children: List.generate(3, (int index) {
-          return Container(
-            child: Image(image: AssetImage('assets/images/img-carousel-$index.png'), fit: BoxFit.cover,),
-          );
+          return Image(image: AssetImage('assets/images/img-carousel-$index.png'), fit: BoxFit.cover,);
         }),
       ),
     );

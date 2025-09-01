@@ -62,6 +62,7 @@ class InformationScreen extends StatelessWidget {
                 // Link de localização da praça
                 GestureDetector(
                   onTap:
+                      // ignore: deprecated_member_use
                       () => launch("https://maps.app.goo.gl/STkJjj8dZKmTAAZV6"),
                   child: SizedBox(
                     child: Row(
@@ -116,6 +117,7 @@ class InformationScreen extends StatelessWidget {
                       // Link para o Facebook
                       GestureDetector(
                         onTap:
+                            // ignore: deprecated_member_use
                             () => launch(
                               "https://www.facebook.com/people/Pra%C3%A7a-da-Ci%C3%AAncia/100063598627380/#",
                             ),
@@ -140,6 +142,7 @@ class InformationScreen extends StatelessWidget {
                       // Link para o Instagram
                       GestureDetector(
                         onTap:
+                            // ignore: deprecated_member_use
                             () => launch(
                               "https://www.instagram.com/ciencia.vix/",
                             ),
@@ -164,6 +167,7 @@ class InformationScreen extends StatelessWidget {
                       // Link para o WebSite
                       GestureDetector(
                         onTap:
+                            // ignore: deprecated_member_use
                             () => launch(
                               "https://sites.google.com/edu.vitoria.es.gov.br/praca-da-ciencia/in%C3%ADcio?authuser=0",
                             ),
@@ -189,6 +193,7 @@ class InformationScreen extends StatelessWidget {
                       GestureDetector(
                         onTap:
                             () =>
+                                // ignore: deprecated_member_use
                                 launch("https://www.youtube.com/@ciencia_vix"),
                         child: Padding(
                           padding: EdgeInsets.only(bottom: 20),

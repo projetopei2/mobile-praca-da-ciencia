@@ -6,6 +6,7 @@ void showLoginRequiredDialog(BuildContext context, String texto) {
     context: context,
     barrierDismissible: false,
     builder: (context) {
+      // ignore: deprecated_member_use
       return WillPopScope(
         onWillPop: () async {
           Navigator.of(context).pushReplacementNamed('/home');

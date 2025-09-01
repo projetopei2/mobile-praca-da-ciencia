@@ -1,4 +1,3 @@
-import 'package:app_praca_ciencia/core/styles/styles.dart';
 import 'package:app_praca_ciencia/core/widgets/carrossel.dart';
 import 'package:app_praca_ciencia/core/widgets/header.dart';
 import 'package:app_praca_ciencia/core/widgets/menu.dart';
@@ -18,12 +17,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Header da pagina
       appBar: Header(title: 'Bem Vindo(a)'),
+      // Menu lateral
       drawer: Menu(),
+      // Scroll da pagina
       body: SingleChildScrollView(
+        // corpo da pagina
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
-          color: Styles.backgroundColor,
+          // Configurações de tema
+          // ignore: deprecated_member_use
+          color: Theme.of(context).colorScheme.background,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -34,7 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Text(
                 'Oficinas',
                 style: TextStyle(
-                  color: Styles.fontColor,
+                  // Configurações de tema
+                  color: Theme.of(context).colorScheme.primary,
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
@@ -56,7 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Text(
                 'Noticias',
                 style: TextStyle(
-                  color: Styles.fontColor,
+                  // Configurações de tema
+                  color: Theme.of(context).colorScheme.primary,
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),

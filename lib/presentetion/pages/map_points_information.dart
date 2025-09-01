@@ -64,6 +64,7 @@ class MapPointInformationScreen extends StatelessWidget {
               ),
               GestureDetector(
                 // Url
+                // ignore: deprecated_member_use
                 onTap: () => launch(link),
                 child: Container(
                   padding: EdgeInsets.only(top: 20, bottom: 50),

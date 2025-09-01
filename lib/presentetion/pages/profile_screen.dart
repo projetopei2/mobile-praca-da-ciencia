@@ -91,6 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         'cep': _enderecoController.text,
       });
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text('Dados atualizados com sucesso!')));
     }
@@ -283,7 +284,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         const SizedBox(height: 24),
         ElevatedButton(
           style: ButtonStyle(
+            // ignore: deprecated_member_use
             backgroundColor: MaterialStateProperty.all<Color>(Styles.button),
+            // ignore: deprecated_member_use
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
@@ -430,6 +433,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onTap:
                       isDateField
                           ? () async =>
+                              // ignore: await_only_futures, use_build_context_synchronously
                               await !readOnly ? _selectDate(context) : ''
                           : null,
                 ),

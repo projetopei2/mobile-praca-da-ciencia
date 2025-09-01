@@ -1,3 +1,4 @@
+import 'package:app_praca_ciencia/core/theme/theme_provider.dart';
 import 'package:app_praca_ciencia/presentetion/pages/news_screen.dart';
 import 'package:app_praca_ciencia/presentetion/pages/about_screen.dart';
 import 'package:app_praca_ciencia/presentetion/pages/agenda_screen.dart';
@@ -13,19 +14,33 @@ import 'package:app_praca_ciencia/presentetion/pages/splash_screen.dart';
 import 'package:app_praca_ciencia/presentetion/pages/tour_screen.dart';
 import 'package:app_praca_ciencia/presentetion/pages/login_screen.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await initializeDateFormatting('pt_BR', null);
 
-  runApp(const MyApp());
+  // Tela de splash
+  runApp(const SplashScreen());
+  // Inicalizar Dependencias do projeto
+  await Future.wait([
+    Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
+    initializeDateFormatting('pt_BR', null),
+  ]);
+
+  // Inicia o app
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -73,6 +88,7 @@ class MyApp extends StatelessWidget {
           return const LoginScreen();
         },
       ),
+      theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
 }

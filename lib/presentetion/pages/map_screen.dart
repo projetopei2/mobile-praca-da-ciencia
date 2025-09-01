@@ -353,6 +353,7 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       body: Stack(
         children: [
+          // ignore: deprecated_member_use
           WillPopScope(
             onWillPop: () async {
               // Ao sair volta a tela ao normal
@@ -374,6 +375,7 @@ class _MapScreenState extends State<MapScreen> {
                 ]);
 
                 Navigator.push(
+                  // ignore: use_build_context_synchronously
                   context,
                   MaterialPageRoute(
                     builder:
@@ -401,6 +403,7 @@ class _MapScreenState extends State<MapScreen> {
             child: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               style: IconButton.styleFrom(
+                // ignore: deprecated_member_use
                 backgroundColor: Colors.black.withOpacity(0.5),
                 padding: const EdgeInsets.all(12),
               ),

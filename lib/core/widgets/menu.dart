@@ -27,6 +27,7 @@ class _MenuState extends State<Menu> {
               borderRadius: BorderRadius.circular(30),
               boxShadow: [
                 BoxShadow(
+                  // ignore: deprecated_member_use
                   color: Colors.black.withOpacity(0.25),
                   blurRadius: 15,
                   offset: const Offset(5, 5),
@@ -57,6 +58,7 @@ class _MenuState extends State<Menu> {
                   onPressed: () async {
                     await FirebaseAuth.instance.signOut();
                     Navigator.of(
+                      // ignore: use_build_context_synchronously
                       context,
                     ).pushNamedAndRemoveUntil('/login', (route) => false);
                   },

@@ -170,6 +170,7 @@ class AuthService {
   // Verifica se e-mail já está cadastrado
   Future<bool> isEmailRegistered(String email) async {
     try {
+      // ignore: deprecated_member_use
       final methods = await _auth.fetchSignInMethodsForEmail(email.trim());
       return methods.isNotEmpty;
     } catch (e) {

@@ -35,8 +35,9 @@ class _InteractiveMapState extends State<InteractiveMap> {
     return FutureBuilder<Size>(
       future: _getImageSize(widget.imageAsset),
       builder: (context, snapshot) {
-        if (!snapshot.hasData)
+        if (!snapshot.hasData) {
           return const Center(child: CircularProgressIndicator());
+        }
 
         final imageSize = snapshot.data!;
         final imageAspectRatio = imageSize.width / imageSize.height;
@@ -88,6 +89,7 @@ class _InteractiveMapState extends State<InteractiveMap> {
                               width: pointWidth,
                               height: pointHeight,
                               decoration: BoxDecoration(
+                                // ignore: deprecated_member_use
                                 color: widget.hitBoxColor.withOpacity(0),
                               ),
                             ),

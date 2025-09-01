@@ -101,6 +101,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _showSuccessDialog();
     } catch (e) {
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text(e.toString())));
     } finally {
@@ -116,7 +117,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       builder: (context) {
         // Depois de 2 segundos é enviado para a tela Home
         Future.delayed(const Duration(seconds: 2), () {
+          // ignore: use_build_context_synchronously
           Navigator.of(context).pop();
+          // ignore: use_build_context_synchronously
           Navigator.of(context).pushReplacementNamed('/home');
         });
 
@@ -188,6 +191,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               borderRadius: BorderRadius.circular(30),
               boxShadow: [
                 BoxShadow(
+                  // ignore: deprecated_member_use
                   color: Colors.black.withOpacity(0.25),
                   blurRadius: 15,
                   offset: const Offset(5, 5),
@@ -372,6 +376,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             children: [
               Image(
                 height: 30,
+                // ignore: unnecessary_brace_in_string_interps
                 image: AssetImage('assets/images/${pathImg}.png'),
                 fit: BoxFit.cover,
               ),

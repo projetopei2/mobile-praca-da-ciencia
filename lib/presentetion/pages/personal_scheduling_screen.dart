@@ -170,6 +170,7 @@ class PersonalSchedulingScreen extends StatelessWidget {
                           await _cancelarAgendamento(snapshot.data!.id).then((
                             _,
                           ) {
+                            // ignore: use_build_context_synchronously
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text(
@@ -178,6 +179,7 @@ class PersonalSchedulingScreen extends StatelessWidget {
                               ),
                             );
                             Navigator.pop(
+                              // ignore: use_build_context_synchronously
                               context,
                             ); // Opcional: voltar para tela anterior
                           });
