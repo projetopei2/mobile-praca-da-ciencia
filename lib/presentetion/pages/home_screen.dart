@@ -16,6 +16,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    // Responsividade
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isLargeScreen = screenWidth > 600;
+
     return Scaffold(
       // Header da pagina
       appBar: Header(title: 'Bem Vindo(a)'),
@@ -25,7 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         // corpo da pagina
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          // Altura do app ocupando toda a tela
+          height: MediaQuery.of(context).size.height,
           // Configurações de tema
           // ignore: deprecated_member_use
           color: Theme.of(context).colorScheme.background,
@@ -33,7 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Carrossel teste
-              Carrossel(),
+              Container(
+                padding: EdgeInsets.all(isLargeScreen ? 30 : 0),
+                child: Carrossel()),
               SizedBox(height: 20),
               // Titulo Oficinas
               Text(
@@ -41,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   // Configurações de tema
                   color: Theme.of(context).colorScheme.primary,
-                  fontSize: 32,
+                  fontSize: isLargeScreen ? 40 : 32,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.start,
@@ -64,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   // Configurações de tema
                   color: Theme.of(context).colorScheme.primary,
-                  fontSize: 32,
+                  fontSize: isLargeScreen ? 40 : 32,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.start,

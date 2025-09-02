@@ -5,8 +5,10 @@ ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
     // ignore: deprecated_member_use
-    background: Styles.backgroundColor,
-    primary: Styles.fontColor
+    background: Styles.backgroundColor, // Background
+    primary: Styles.fontColor, // Fonte
+    secondary: Styles.backgroundContentColor, // Background Content
+    tertiary: Styles.textFieldColor, // Input 
   )
 );
 
@@ -15,6 +17,8 @@ ThemeData darkMode = ThemeData(
   colorScheme: ColorScheme.dark(
     // ignore: deprecated_member_use
     background: Styles.darkBackgroundColor,
-    primary: Styles.darkFontColor
+    primary: Styles.darkFontColor,
+    secondary: Styles.darkBackgroundContentColor,
+    tertiary: Styles.darkTextFieldColor,
   )
 );

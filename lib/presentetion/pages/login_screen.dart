@@ -57,12 +57,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Responsividade
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isLargeScreen = screenWidth > 600;
+
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-        decoration: BoxDecoration(color: Styles.backgroundColor),
+        decoration: BoxDecoration(
+          // ignore: deprecated_member_use
+          color: Theme.of(context).colorScheme.background,
+        ),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -72,26 +79,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Text(
                   'Bem-Vindo(a),',
                   style: TextStyle(
-                    fontSize: 36,
-                    color: Styles.fontColor,
+                    fontSize: isLargeScreen ? 50 : 36,
+                    color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.start,
                 ),
               ),
+              isLargeScreen ? SizedBox(height: 100) : Container(),
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 20),
-                child: const Image(
-                  height: 160,
+                child: Image(
+                  height: isLargeScreen ? 300 : 160,
                   image: AssetImage('assets/images/logoLogin.png'),
                   fit: BoxFit.cover,
                 ),
               ),
+              isLargeScreen ? SizedBox(height: 100) : Container(),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Styles.backgroundContentColor,
+                  color: Theme.of(context).colorScheme.secondary,
                   borderRadius: BorderRadius.circular(30),
                   boxShadow: [
                     BoxShadow(
@@ -107,17 +116,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       'ENTRAR',
                       style: TextStyle(
-                        fontSize: 24,
-                        color: Styles.fontColor,
+                        fontSize: isLargeScreen ? 40 : 24,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    _buildLabel('E-MAIL'),
+                    _buildLabel('E-MAIL', context, isLargeScreen),
                     _buildTextField(
                       controller: emailController,
                       hint: 'Digite seu e-mail',
+                      context: context,
+                      isLargeScreen: isLargeScreen,
                     ),
-                    _buildLabel('SENHA'),
+                    _buildLabel('SENHA', context, isLargeScreen),
                     _buildTextField(
                       controller: senhaController,
                       hint: 'Digite sua senha',
@@ -128,6 +139,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           _obscurePassword = !_obscurePassword;
                         });
                       },
+                      context: context,
+                      isLargeScreen: isLargeScreen,
                     ),
 
                     Container(
@@ -145,8 +158,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Text(
                           'Esqueci minha senha',
                           style: TextStyle(
-                            fontSize: 15,
-                            color: Styles.fontColor,
+                            fontSize: isLargeScreen ? 24 : 16,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                       ),
@@ -154,15 +167,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Styles.textFieldColor,
-                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        backgroundColor: Theme.of(context).colorScheme.tertiary,
+                        padding:
+                            isLargeScreen
+                                ? EdgeInsets.symmetric(
+                                  horizontal: 60,
+                                  vertical: 12,
+                                )
+                                : EdgeInsets.symmetric(horizontal: 30),
                       ),
                       onPressed: () => _handleLoginWithEmailPassword(context),
                       child: Text(
                         'ENTRAR',
                         style: TextStyle(
-                          color: Styles.fontColor,
-                          fontSize: 20,
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: isLargeScreen ? 30 : 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -172,23 +191,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: 100,
-                          height: 3,
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(color: Styles.lineBorderColor),
+                        Expanded(
+                          child: Divider(
+                            color: Styles.lineBorderColor,
+                            thickness: 1,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: Text(
+                            'OU',
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontSize: isLargeScreen ? 24 : 16,
                             ),
                           ),
                         ),
-                        Text('OU'),
-                        Container(
-                          width: 100,
-                          height: 3,
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(color: Styles.lineBorderColor),
-                            ),
+                        Expanded(
+                          child: Divider(
+                            color: Styles.lineBorderColor,
+                            thickness: 1,
                           ),
                         ),
                       ],
@@ -197,15 +219,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 10),
                     Text(
                       'Entre com sua conta Google',
-                      style: TextStyle(fontSize: 15, color: Styles.fontColor),
+                      style: TextStyle(
+                        fontSize: isLargeScreen ? 24 : 16,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                     ),
 
                     SizedBox(height: 10),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Styles.textFieldColor,
+                        backgroundColor: Theme.of(context).colorScheme.tertiary,
                         padding: EdgeInsets.symmetric(
-                          horizontal: 20,
+                          horizontal: isLargeScreen ? 60 : 20,
                           vertical: 10,
                         ),
                       ),
@@ -220,8 +245,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           Text(
                             'GMAIL',
                             style: TextStyle(
-                              fontSize: 14,
-                              color: Styles.fontColor,
+                              fontSize: isLargeScreen ? 24 : 14,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                           ),
                         ],
@@ -237,25 +262,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Container(
                         width: double.infinity,
                         padding: EdgeInsets.symmetric(vertical: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Não possui conta?',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Styles.fontColor,
-                              ),
-                            ),
-                            Text(
-                              'Cadastre-se aqui',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Styles.fontColor,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+                        child: Text(
+                          'Não possui conta? Cadastre-se aqui!',
+                          style: TextStyle(
+                            fontSize: isLargeScreen ? 24 : 16,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
@@ -268,8 +281,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         'ACESSAR COMO VISITANTE',
                         style: TextStyle(
-                          fontSize: 15,
-                          color: Styles.fontColor,
+                          fontSize: isLargeScreen ? 24 : 16,
+                          color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -286,14 +299,17 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 // build de label com style padrão
-Widget _buildLabel(String text) {
+Widget _buildLabel(String text, context, isLargeScreen) {
   return SizedBox(
     width: double.infinity,
     child: Padding(
       padding: const EdgeInsets.only(bottom: 5, top: 10),
       child: Text(
         text,
-        style: TextStyle(fontSize: 15, color: Styles.fontColor),
+        style: TextStyle(
+          fontSize: isLargeScreen ? 24 : 15,
+          color: Theme.of(context).colorScheme.primary,
+        ),
         textAlign: TextAlign.start,
       ),
     ),
@@ -307,24 +323,30 @@ Widget _buildTextField({
   bool isPassword = false,
   bool? obscurePassword, // Novo parâmetro
   VoidCallback? toggleObscurePassword, // Novo parâmetro
+  context,
+  isLargeScreen,
 }) {
   return PhysicalModel(
     borderRadius: BorderRadius.circular(50),
-    color: Styles.textFieldColor,
+    color: Theme.of(context).colorScheme.tertiary,
     child: TextField(
       controller: controller,
       obscureText: isPassword ? (obscurePassword ?? true) : false,
       decoration: InputDecoration(
         hintText: hint,
+        hintStyle: TextStyle(
+          color: Theme.of(context).colorScheme.primary,
+          fontSize: isLargeScreen ? 24 : 16,
+        ),
         filled: true,
-        fillColor: Styles.textFieldColor,
+        fillColor: Theme.of(context).colorScheme.tertiary,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(50),
           borderSide: BorderSide.none,
         ),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 14,
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: isLargeScreen ? 30 : 16,
+          vertical: isLargeScreen ? 35 : 14,
         ),
         suffixIcon:
             isPassword
@@ -333,7 +355,8 @@ Widget _buildTextField({
                     (obscurePassword ?? true)
                         ? Icons.visibility
                         : Icons.visibility_off,
-                    color: Styles.fontColor,
+                    color: Theme.of(context).colorScheme.primary,
+                    size: isLargeScreen ? 40 : 24,
                   ),
                   onPressed: toggleObscurePassword,
                 )

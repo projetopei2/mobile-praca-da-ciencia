@@ -12,18 +12,23 @@ class Menu extends StatefulWidget {
 class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isLargeScreen = screenWidth > 600;
+
     return Drawer(
-      backgroundColor: Styles.backgroundColor,
+      width: isLargeScreen ? 700 : 300,
+      // ignore: deprecated_member_use
+      backgroundColor: Theme.of(context).colorScheme.background,
       child: ListView(
         children: <Widget>[
           DrawerHeader(
-            child: Image(image: AssetImage('assets/images/LogoMenu.png')),
+            child: Image( height: 500, image: AssetImage('assets/images/LogoMenu.png')),
           ),
           Container(
             padding: const EdgeInsets.all(10),
             margin: const EdgeInsets.all(30),
             decoration: BoxDecoration(
-              color: Styles.backgroundContentColor,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(30),
               boxShadow: [
                 BoxShadow(
@@ -36,20 +41,38 @@ class _MenuState extends State<Menu> {
             ),
             child: Column(
               children: [
-                _buildOptionsMenu('Início', '/home', 'homeIcon', context),
-                _buildOptionsMenu('A Praça', '/about', 'pracaIcon', context),
-                _buildOptionsMenu('Mapa', '/mapa', 'mapIcon', context),
-                _buildOptionsMenu('Tour Virtual','/tour','cameraIcon',context,),
+                _buildOptionsMenu('Início', '/home', 'homeIcon', context, isLargeScreen),
+                _buildOptionsMenu('A Praça', '/about', 'pracaIcon', context, isLargeScreen),
+                _buildOptionsMenu('Mapa', '/mapa', 'mapIcon', context, isLargeScreen),
+                _buildOptionsMenu(
+                  'Tour Virtual',
+                  '/tour',
+                  'cameraIcon',
+                  context,
+                   isLargeScreen
+                ),
                 // _buildOptionsMenu('Oficinas', '', 'oficinasIcon', context),
-                _buildOptionsMenu('Agenda', '/schedule', 'agendaIcon', context),
-                _buildOptionsMenu('Regras','/regulation','regrasIcon',context,),
-                _buildOptionsMenu('Informações','/information','infoIcon',context,),
+                _buildOptionsMenu('Agenda', '/schedule', 'agendaIcon', context, isLargeScreen),
+                _buildOptionsMenu(
+                  'Regras',
+                  '/regulation',
+                  'regrasIcon',
+                  context,
+                  isLargeScreen
+                ),
+                _buildOptionsMenu(
+                  'Informações',
+                  '/information',
+                  'infoIcon',
+                  context,
+                  isLargeScreen
+                ),
 
                 const SizedBox(height: 20),
 
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Styles.textFieldColor,
+                    backgroundColor:Theme.of(context).colorScheme.tertiary,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 60,
                       vertical: 12,
@@ -65,8 +88,8 @@ class _MenuState extends State<Menu> {
                   child: Text(
                     'SAIR',
                     style: TextStyle(
-                      color: Styles.fontColor,
-                      fontSize: 20,
+                      color: Theme.of(context).colorScheme.primary,
+                      fontSize: isLargeScreen ? 30 : 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -85,6 +108,7 @@ Widget _buildOptionsMenu(
   String rota,
   String pathImg,
   BuildContext context,
+  isLargeScreen,
 ) {
   return Column(
     children: [
@@ -95,7 +119,7 @@ Widget _buildOptionsMenu(
         ),
         title: Text(
           text,
-          style: TextStyle(fontSize: 20, color: Styles.fontColor),
+          style: TextStyle(fontSize:isLargeScreen ? 40 : 20, color: Theme.of(context).colorScheme.primary),
           textAlign: TextAlign.center,
         ),
         onTap: () {

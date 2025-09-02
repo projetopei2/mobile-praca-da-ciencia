@@ -11,14 +11,21 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    // Responsividade
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isLargeScreen = screenWidth > 600;
 
     return AppBar(
-      iconTheme: IconThemeData(size: 40, color: Theme.of(context).colorScheme.primary),
+      iconTheme: IconThemeData(
+        size: isLargeScreen ? 60 : 40,
+        color: Theme.of(context).colorScheme.primary,
+      ),
       centerTitle: true,
+      toolbarHeight: isLargeScreen ? 150 : 60,
       title: Text(
         title,
         style: TextStyle(
-          fontSize: 30,
+          fontSize: isLargeScreen ? 40 : 30,
           fontWeight: FontWeight.bold,
           color: Theme.of(context).colorScheme.primary,
           fontFamily: GoogleFonts.lato().fontFamily,
@@ -32,13 +39,20 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: <Widget>[
         IconButton(
-          icon: Icon( isDarkMode ? Icons.nightlight : Icons.sunny, size: 30, color: Theme.of(context).colorScheme.primary,),
+          icon: Icon(
+            isDarkMode ? Icons.nightlight : Icons.sunny,
+            size: isLargeScreen ? 50 : 30,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           onPressed: () {
             Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
           },
         ),
         IconButton(
-          icon: Icon(Icons.account_circle, color: Theme.of(context).colorScheme.primary,),
+          icon: Icon(
+            Icons.account_circle,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           onPressed: () {
             Navigator.of(context).popUntil((route) => route.isFirst);
             Navigator.of(context).pushNamed('/profile');
@@ -49,5 +63,5 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(100); // 🔥 mesmo valor do toolbarHeight
 }
