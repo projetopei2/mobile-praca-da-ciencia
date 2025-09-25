@@ -38,11 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Carrossel teste
+
+              // Carrossel para testes
               Container(
                 padding: EdgeInsets.all(isLargeScreen ? 30 : 0),
                 child: Carrossel()),
               SizedBox(height: 20),
+
               // Titulo Oficinas
               Text(
                 'Oficinas',
@@ -55,17 +57,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 textAlign: TextAlign.start,
               ),
               const SizedBox(height: 10),
-              // Carrossel de Oficinas
+
+              // Stream que carrega os dados vindo da tebela oficinas e mostra em um carrossel
               StreamBuilder(
                 stream:
                     FirebaseFirestore.instance
                         .collection('oficinas')
                         .snapshots(),
                 builder: (context, snapshot) {
+                  // Carrossel de Oficinas
                   return OficinasSection(snapshot: snapshot);
                 },
               ),
               SizedBox(height: 20),
+
               // Titulo Noticias
               Text(
                 'Noticias',
@@ -78,13 +83,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 textAlign: TextAlign.start,
               ),
               const SizedBox(height: 10),
-              // Carrossel de Noticias
+
+              // Stream que carrega os dados vindo da tebela noticias e mostra em um carrossel
               StreamBuilder(
                 stream:
                     FirebaseFirestore.instance
                         .collection('noticias')
                         .snapshots(),
                 builder: (context, snapshot) {
+                  // Carrossel de Noticias
                   return NewsSection(snapshot: snapshot);
                 },
               ),

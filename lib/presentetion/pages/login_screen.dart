@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               isLargeScreen ? SizedBox(height: 100) : Container(),
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Image(
                   height: isLargeScreen ? 300 : 160,
                   image: AssetImage('assets/images/logoLogin.png'),

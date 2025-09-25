@@ -17,10 +17,7 @@ import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
-
-import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +26,6 @@ void main() async {
   runApp(const SplashScreen());
   // Inicalizar Dependencias do projeto
   await Future.wait([
-    Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
     initializeDateFormatting('pt_BR', null),
   ]);
 
@@ -74,20 +70,9 @@ class MyApp extends StatelessWidget {
         '/news': (_) => const NewsScreen(),
       },
 
-      // Tela inicial com verificação do Firebase
+      // Tela inicial sendo a de login
       home: const LoginScreen(),
-      // home: StreamBuilder<User?>(
-      //   stream: FirebaseAuth.instance.authStateChanges(),
-      //   builder: (context, snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.waiting) {
-      //       return const SplashScreen();
-      //     }
-      //     if (snapshot.hasData) {
-      //       return const HomeScreen();
-      //     }
-      //     return const LoginScreen();
-      //   },
-      // ),
+      // Tema da tela referente a Dark e White mode
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }

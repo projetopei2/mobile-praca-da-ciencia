@@ -63,5 +63,5 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(100); // 🔥 mesmo valor do toolbarHeight
+  Size get preferredSize => const Size.fromHeight(65);
 }
