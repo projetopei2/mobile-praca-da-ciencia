@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
     applicationId = "praca.da.ciencia"
-    minSdk = flutter.minSdkVersion  // 🔥 Atualizado para resolver o erro
+    minSdk = 23  // 🔥 Atualizado para resolver o erro
     targetSdk = flutter.targetSdkVersion
     versionCode = flutter.versionCode
     versionName = flutter.versionName
