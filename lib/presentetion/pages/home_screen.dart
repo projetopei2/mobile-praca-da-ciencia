@@ -1,9 +1,6 @@
 import 'package:app_praca_ciencia/core/widgets/carrossel.dart';
 import 'package:app_praca_ciencia/core/widgets/header.dart';
 import 'package:app_praca_ciencia/core/widgets/menu.dart';
-import 'package:app_praca_ciencia/core/widgets/oficina_section.dart';
-import 'package:app_praca_ciencia/core/widgets/noticias_section.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -59,16 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 10),
 
               // Stream que carrega os dados vindo da tebela oficinas e mostra em um carrossel
-              StreamBuilder(
-                stream:
-                    FirebaseFirestore.instance
-                        .collection('oficinas')
-                        .snapshots(),
-                builder: (context, snapshot) {
-                  // Carrossel de Oficinas
-                  return OficinasSection(snapshot: snapshot);
-                },
-              ),
+              // StreamBuilder(
+              //   stream:
+              //       FirebaseFirestore.instance
+              //           .collection('oficinas')
+              //           .snapshots(),
+              //   builder: (context, snapshot) {
+              //     // Carrossel de Oficinas
+              //     return OficinasSection(snapshot: snapshot);
+              //   },
+              // ),
               SizedBox(height: 20),
 
               // Titulo Noticias
@@ -85,16 +82,16 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 10),
 
               // Stream que carrega os dados vindo da tebela noticias e mostra em um carrossel
-              StreamBuilder(
-                stream:
-                    FirebaseFirestore.instance
-                        .collection('noticias')
-                        .snapshots(),
-                builder: (context, snapshot) {
-                  // Carrossel de Noticias
-                  return NewsSection(snapshot: snapshot);
-                },
-              ),
+              // StreamBuilder(
+              //   stream:
+              //       FirebaseFirestore.instance
+              //           .collection('noticias')
+              //           .snapshots(),
+              //   builder: (context, snapshot) {
+              //     // Carrossel de Noticias
+              //     return NewsSection(snapshot: snapshot);
+              //   },
+              // ),
             ],
           ),
         ),

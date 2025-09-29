@@ -1,9 +1,7 @@
 import 'package:app_praca_ciencia/core/styles/styles.dart';
 import 'package:app_praca_ciencia/core/widgets/header.dart';
-import 'package:app_praca_ciencia/core/widgets/login_required_dialog.dart';
 import 'package:app_praca_ciencia/presentetion/pages/cadastro_escolas_screen.dart';
 import 'package:app_praca_ciencia/presentetion/pages/cadastro_visitante_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AgendamentoScreen extends StatefulWidget {
@@ -14,23 +12,23 @@ class AgendamentoScreen extends StatefulWidget {
 }
 
 class _AgendamentoScreenState extends State<AgendamentoScreen> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  bool _isUserAuthenticated() {
-    return _auth.currentUser != null;
-  }
+  // bool _isUserAuthenticated() {
+  //   return _auth.currentUser != null;
+  // }
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!_isUserAuthenticated()) {
-        showLoginRequiredDialog(
-          context,
-          'Faça o Login para efetuar agendamentos.',
-        );
-      }
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   if (!_isUserAuthenticated()) {
+    //     showLoginRequiredDialog(
+    //       context,
+    //       'Faça o Login para efetuar agendamentos.',
+    //     );
+    //   }
+    // });
   }
 
   @override

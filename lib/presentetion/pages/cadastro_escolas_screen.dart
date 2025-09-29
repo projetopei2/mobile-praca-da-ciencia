@@ -380,7 +380,9 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
                       ),
                     ),
                     value: m,
+                    // ignore: deprecated_member_use
                     groupValue: municipioSelecionado,
+                    // ignore: deprecated_member_use
                     onChanged:
                         (value) => setState(
                           () => municipioSelecionado = value.toString(),
@@ -403,7 +405,9 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
                       ),
                     ),
                     value: e,
+                    // ignore: deprecated_member_use
                     groupValue: qtdEstudantes,
+                    // ignore: deprecated_member_use
                     onChanged:
                         (value) =>
                             setState(() => qtdEstudantes = value.toString()),
@@ -425,7 +429,9 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
                       ),
                     ),
                     value: e,
+                    // ignore: deprecated_member_use
                     groupValue: qtdAcompanhantes,
+                    // ignore: deprecated_member_use
                     onChanged:
                         (value) =>
                             setState(() => qtdAcompanhantes = value.toString()),
@@ -446,7 +452,9 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
                     ),
                   ),
                   value: 'Educação Infantil',
+                  // ignore: deprecated_member_use
                   groupValue: grupoSelecionado,
+                  // ignore: deprecated_member_use
                   onChanged:
                       (value) => setState(() {
                         grupoSelecionado = value.toString();
@@ -464,7 +472,9 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
                     ),
                   ),
                   value: 'FundMedio',
+                  // ignore: deprecated_member_use
                   groupValue: grupoSelecionado,
+                  // ignore: deprecated_member_use
                   onChanged:
                       (value) => setState(() {
                         grupoSelecionado = value.toString();
@@ -490,7 +500,9 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
                           ),
                         ),
                         value: r,
+                        // ignore: deprecated_member_use
                         groupValue: roteiroSelecionado,
+                        // ignore: deprecated_member_use
                         onChanged:
                             (value) => setState(
                               () => roteiroSelecionado = value.toString(),
@@ -543,7 +555,9 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
                     ),
                   ),
                   value: '8h',
+                  // ignore: deprecated_member_use
                   groupValue: horarioSelecionado,
+                  // ignore: deprecated_member_use
                   onChanged:
                       (v) => setState(() => horarioSelecionado = v.toString()),
                 ),
@@ -558,7 +572,9 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
                     ),
                   ),
                   value: '9h30',
+                  // ignore: deprecated_member_use
                   groupValue: horarioSelecionado,
+                  // ignore: deprecated_member_use
                   onChanged:
                       (v) => setState(() => horarioSelecionado = v.toString()),
                 ),
@@ -574,7 +590,9 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
                     ),
                   ),
                   value: '13h30',
+                  // ignore: deprecated_member_use
                   groupValue: horarioSelecionado,
+                  // ignore: deprecated_member_use
                   onChanged:
                       (v) => setState(() => horarioSelecionado = v.toString()),
                 ),
@@ -589,7 +607,9 @@ class _CadastroEscolasScreenState extends State<CadastroEscolasScreen> {
                     ),
                   ),
                   value: '15h',
+                  // ignore: deprecated_member_use
                   groupValue: horarioSelecionado,
+                  // ignore: deprecated_member_use
                   onChanged:
                       (v) => setState(() => horarioSelecionado = v.toString()),
                 ),

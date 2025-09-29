@@ -1,4 +1,3 @@
-import 'package:app_praca_ciencia/core/services/auth_service.dart';
 import 'package:app_praca_ciencia/core/styles/styles.dart';
 import 'package:app_praca_ciencia/core/widgets/calendar.dart';
 import 'package:app_praca_ciencia/presentetion/pages/login_screen.dart';
@@ -52,7 +51,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     filter: {"#": RegExp(r'[0-9]')},
   );
 
-  final AuthService _authService = AuthService();
+  // final AuthService _authService = AuthService();
   bool _isLoading = false;
 
   // Função para cadastrar um novo usuário
@@ -86,16 +85,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
       }
 
       // Executa o cadastro
-      await _authService.registerWithEmailAndPassword(
-        email: _emailController.text,
-        password: _senhaController.text,
-        nome: _nomeController.text,
-        dataNascimento: _dataNascimentoController.text,
-        cpf: _cpfController.text,
-        telefone: _telefoneController.text,
-        cep: _cepController.text,
-        context: context,
-      );
+      // await _authService.registerWithEmailAndPassword(
+      //   email: _emailController.text,
+      //   password: _senhaController.text,
+      //   nome: _nomeController.text,
+      //   dataNascimento: _dataNascimentoController.text,
+      //   cpf: _cpfController.text,
+      //   telefone: _telefoneController.text,
+      //   cep: _cepController.text,
+      //   context: context,
+      // );
 
       // Mostra o Dialog de sucesso
       _showSuccessDialog();

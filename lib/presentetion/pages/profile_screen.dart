@@ -1,11 +1,6 @@
 import 'package:app_praca_ciencia/core/styles/styles.dart';
 import 'package:app_praca_ciencia/core/widgets/calendar.dart';
 import 'package:app_praca_ciencia/core/widgets/header.dart';
-import 'package:app_praca_ciencia/core/widgets/login_required_dialog.dart';
-import 'package:app_praca_ciencia/core/widgets/oficina_section.dart';
-import 'package:app_praca_ciencia/core/widgets/visitas_section.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -18,7 +13,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
   bool showProfile = true;
   // Inputs Desabilitados
   bool isEditing = false;
@@ -57,44 +52,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   // Carregando os dados do usuário
   Future<void> _loadUserData() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      final doc =
-          await FirebaseFirestore.instance
-              .collection('users')
-              .doc(user.uid)
-              .get();
-      if (doc.exists) {
-        final data = doc.data()!;
-        setState(() {
-          _nomeController.text = data['nome'] ?? '';
-          _dataNascimentoController.text = data['dataNascimento'] ?? '';
-          _cpfController.text = data['cpf'] ?? '';
-          _emailController.text = data['email'] ?? '';
-          _telefoneController.text = data['telefone'] ?? '';
-          _enderecoController.text = data['cep'] ?? '';
-        });
-      }
-    }
+    // final user = FirebaseAuth.instance.currentUser;
+    // if (user != null) {
+    //   final doc =
+    //       await FirebaseFirestore.instance
+    //           .collection('users')
+    //           .doc(user.uid)
+    //           .get();
+    //   if (doc.exists) {
+    //     final data = doc.data()!;
+    //     setState(() {
+    //       _nomeController.text = data['nome'] ?? '';
+    //       _dataNascimentoController.text = data['dataNascimento'] ?? '';
+    //       _cpfController.text = data['cpf'] ?? '';
+    //       _emailController.text = data['email'] ?? '';
+    //       _telefoneController.text = data['telefone'] ?? '';
+    //       _enderecoController.text = data['cep'] ?? '';
+    //     });
+    //   }
+    // }
   }
 
   // Salvando as alterações feitas nos dados do usuário
   Future<void> _saveUserData() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
-        'nome': _nomeController.text,
-        'dataNascimento': _dataNascimentoController.text,
-        'cpf': _cpfController.text,
-        'email': _emailController.text,
-        'telefone': _telefoneController.text,
-        'cep': _enderecoController.text,
-      });
-      ScaffoldMessenger.of(
-        // ignore: use_build_context_synchronously
-        context,
-      ).showSnackBar(SnackBar(content: Text('Dados atualizados com sucesso!')));
-    }
+    // final user = FirebaseAuth.instance.currentUser;
+    // if (user != null) {
+    //   await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+    //     'nome': _nomeController.text,
+    //     'dataNascimento': _dataNascimentoController.text,
+    //     'cpf': _cpfController.text,
+    //     'email': _emailController.text,
+    //     'telefone': _telefoneController.text,
+    //     'cep': _enderecoController.text,
+    //   });
+    //   ScaffoldMessenger.of(
+    //     // ignore: use_build_context_synchronously
+    //     context,
+    //   ).showSnackBar(SnackBar(content: Text('Dados atualizados com sucesso!')));
+    // }
   }
 
   @override
@@ -133,9 +128,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  bool _isUserAuthenticated() {
-    return _auth.currentUser != null;
-  }
+  // bool _isUserAuthenticated() {
+  //   return _auth.currentUser != null;
+  // }
 
   @override
   void initState() {
@@ -144,12 +139,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     // Se o usuário não estiver autenticado mostra o popup
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!_isUserAuthenticated()) {
-        showLoginRequiredDialog(
-          context,
-          'Faça o Login para visualizar os dados do usuário.',
-        );
-      }
+      // if (!_isUserAuthenticated()) {
+      //   showLoginRequiredDialog(
+      //     context,
+      //     'Faça o Login para visualizar os dados do usuário.',
+      //   );
+      // }
     });
   }
 
@@ -324,26 +319,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         const SizedBox(height: 10),
         // Carrossel de Oficinas
-        StreamBuilder(
-          stream:
-              FirebaseFirestore.instance
-                  .collection('oficinas')
-                  .where(
-                    'lista_participantes',
-                    arrayContains: FirebaseAuth.instance.currentUser!.uid,
-                  )
-                  .snapshots(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) return CircularProgressIndicator();
-            if (snapshot.data!.docs.isEmpty) {
-              return Text(
-                'Você não está participando de nenhuma oficina!',
-                style: TextStyle(color: Styles.lineBorderColor, fontSize: 16),
-              );
-            }
-            return OficinasSection(snapshot: snapshot);
-          },
-        ),
+        // StreamBuilder(
+        //   stream:
+        //       FirebaseFirestore.instance
+        //           .collection('oficinas')
+        //           .where(
+        //             'lista_participantes',
+        //             arrayContains: FirebaseAuth.instance.currentUser!.uid,
+        //           )
+        //           .snapshots(),
+        //   builder: (context, snapshot) {
+        //     if (!snapshot.hasData) return CircularProgressIndicator();
+        //     if (snapshot.data!.docs.isEmpty) {
+        //       return Text(
+        //         'Você não está participando de nenhuma oficina!',
+        //         style: TextStyle(color: Styles.lineBorderColor, fontSize: 16),
+        //       );
+        //     }
+        //     return OficinasSection(snapshot: snapshot);
+        //   },
+        // ),
         SizedBox(height: 5),
         SizedBox(
           width: double.infinity,
@@ -359,26 +354,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         SizedBox(height: 10),
         // Carrossel de Agendamentos
-        StreamBuilder(
-          stream:
-              FirebaseFirestore.instance
-                  .collection('agendamentos')
-                  .where(
-                    'id_usuario',
-                    isEqualTo: FirebaseAuth.instance.currentUser?.uid ?? '',
-                  )
-                  .snapshots(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) return CircularProgressIndicator();
-            if (snapshot.data!.docs.isEmpty) {
-              return Text(
-                'Você não está participando de nenhuma oficina!',
-                style: TextStyle(color: Styles.lineBorderColor, fontSize: 16),
-              );
-            }
-            return VisitasSection(snapshot: snapshot);
-          },
-        ),
+        // StreamBuilder(
+        //   stream:
+        //       FirebaseFirestore.instance
+        //           .collection('agendamentos')
+        //           .where(
+        //             'id_usuario',
+        //             isEqualTo: FirebaseAuth.instance.currentUser?.uid ?? '',
+        //           )
+        //           .snapshots(),
+        //   builder: (context, snapshot) {
+        //     if (!snapshot.hasData) return CircularProgressIndicator();
+        //     if (snapshot.data!.docs.isEmpty) {
+        //       return Text(
+        //         'Você não está participando de nenhuma oficina!',
+        //         style: TextStyle(color: Styles.lineBorderColor, fontSize: 16),
+        //       );
+        //     }
+        //     return VisitasSection(snapshot: snapshot);
+        //   },
+        // ),
       ],
     );
   }

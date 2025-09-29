@@ -1,4 +1,3 @@
-import 'package:app_praca_ciencia/core/services/auth_service.dart';
 import 'package:app_praca_ciencia/core/styles/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +10,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final TextEditingController emailController = TextEditingController();
-  final AuthService authService = AuthService();
+  // final AuthService authService = AuthService();
 
   // Função para resetar a senha do usuário
   Future<void> _handleResetPassword(BuildContext context) async {
@@ -25,7 +24,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     }
 
     try {
-      await authService.resetPassword(emailController.text);
+      // await authService.resetPassword(emailController.text);
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

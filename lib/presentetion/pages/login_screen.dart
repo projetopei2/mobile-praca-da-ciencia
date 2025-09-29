@@ -1,4 +1,3 @@
-import 'package:app_praca_ciencia/core/services/auth_service.dart';
 import 'package:app_praca_ciencia/core/styles/styles.dart';
 import 'package:app_praca_ciencia/presentetion/pages/forgot_password.dart';
 import 'package:app_praca_ciencia/presentetion/pages/register_screen.dart';
@@ -14,7 +13,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
-  final AuthService authService = AuthService();
+  // final AuthService authService = AuthService();
 
   // Visualizar senha
   bool _obscurePassword = true;
@@ -28,10 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     try {
-      await authService.loginWithEmailPassword(
-        emailController.text,
-        senhaController.text,
-      );
+      // await authService.loginWithEmailPassword(
+      //   emailController.text,
+      //   senhaController.text,
+      // );
       // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacementNamed('/home');
     } catch (e) {
@@ -44,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _handleGoogleSignIn(BuildContext context) async {
     try {
-      await authService.signInWithGoogle();
+      // await authService.signInWithGoogle();
       // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacementNamed('/home');
     } catch (e) {
